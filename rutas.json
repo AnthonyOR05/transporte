@@ -1,0 +1,17 @@
+[
+    {
+        "nombre": "Ruta 25 - Centro a Universidad",
+        "paradas": [
+            { "nombre": "Estación Central", "lat": 25.6751, "lng": -100.3185 },
+            { "nombre": "Plaza Principal", "lat": 25.6715, "lng": -100.3099 },
+            { "nombre": "Campus Universitario", "lat": 25.6783, "lng": -100.3003 }
+        ]
+    },
+    {
+        "nombre": "Ruta 40 - Mercado a Hospital",
+        "paradas": [
+            { "nombre": "Mercado Municipal", "lat": 25.6800, "lng": -100.3150 },
+            { "nombre": "Hospital General", "lat": 25.6730, "lng": -100.3050 }
+        ]
+    }
+]
