@@ -1,17 +1,19 @@
 [
     {
-        "nombre": "Ruta 25 - Centro a Universidad",
+        "nombre": "Ruta 25 - Centro a ITT",
         "paradas": [
-            { "nombre": "Estación Central", "lat": 25.6751, "lng": -100.3185 },
-            { "nombre": "Plaza Principal", "lat": 25.6715, "lng": -100.3099 },
-            { "nombre": "Campus Universitario", "lat": 25.6783, "lng": -100.3003 }
+            { "nombre": "Centro", "lat": 32.53513, "lng": -117.03859 },
+            { "nombre": "Plaza Principal", "lat": 32.53258, "lng": -117.01887},
+            { "nombre": "Campus Universitario", "lat": 32.53001, "lng": -116.98710 }
         ]
     },
     {
-        "nombre": "Ruta 40 - Mercado a Hospital",
+        "nombre": "Taxi 00759 - Centro a UABC",
         "paradas": [
-            { "nombre": "Mercado Municipal", "lat": 25.6800, "lng": -100.3150 },
-            { "nombre": "Hospital General", "lat": 25.6730, "lng": -100.3050 }
+            { "nombre": "Centro", "lat": 32.53513, "lng": -117.03859 },	
+            { "nombre": "Plaza Rio", "lat": 32.52852, "lng": -117.01979 },
+			{ "nombre": "UABC", "lat": 32.53070, "lng": -116.96610 }
+
         ]
     }
 ]
