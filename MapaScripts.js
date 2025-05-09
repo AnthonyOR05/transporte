@@ -88,7 +88,7 @@ function loadInitialData() {
 // Función para cargar rutas desde el JSON
 async function loadRoutes() {
     try {
-        const response = await fetch('./datos.json');
+        const response = await fetch('./rutas.json');
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         
         const data = await response.json();
@@ -105,27 +105,22 @@ async function loadRoutes() {
 }
 
 // Función para dibujar una ruta en el mapa
-function drawRoute(route) {
+function drawRoute(route, color = '#0066cc') {
     if (!map) {
         console.error('El mapa no está inicializado');
         return;
     }
-    
-    // Limpiar el mapa
-    clearMap();
-    
-    // Validar que la ruta tenga paradas
+
+    // NO limpiar el mapa aquí (se hace una vez desde searchRoutes)
+
     if (!route.paradas || !Array.isArray(route.paradas) || route.paradas.length === 0) {
         console.error('La ruta no tiene paradas válidas');
         return;
     }
-    
-    // Crear array de puntos para la ruta
+
     const puntos = [];
-    
-    // Añadir marcadores para cada parada
+
     route.paradas.forEach(parada => {
-        // Validar coordenadas
         if (isValidCoordinate(parada.lat, parada.lng)) {
             const marker = L.marker([parada.lat, parada.lng], {
                 icon: L.divIcon({
@@ -134,42 +129,43 @@ function drawRoute(route) {
                     iconSize: [24, 24]
                 })
             }).addTo(map);
-            
+
             marker.bindPopup(`
                 <div class="popup-content">
                     <h4>${parada.nombre}</h4>
                     <p><strong>Ruta:</strong> ${route.nombre}</p>
                 </div>
             `);
-            
+
             puntos.push([parada.lat, parada.lng]);
         }
     });
-    
-    // Dibujar línea de la ruta si hay al menos 2 puntos
+
     if (puntos.length > 1) {
         L.polyline(puntos, {
-            color: '#0066cc',
+            color: color,
             weight: 4,
-            opacity: 0.8,
-            dashArray: '5, 5'
+            opacity: 0.8
         }).addTo(map);
     }
-    
-    // Ajustar vista para mostrar toda la ruta
-    if (puntos.length > 0) {
-        map.fitBounds(puntos, { 
-            padding: [50, 50],
-            maxZoom: 15
-        });
+
+    // Solo ajustar vista a la primera ruta encontrada
+    if (puntos.length > 0 && color === '#0066cc') {
+        map.fitBounds(puntos, { padding: [50, 50], maxZoom: 15 });
     }
-    
-    // Actualizar información de la ruta
+
     updateRouteInfo(route);
-    
-    // Forzar redibujado del mapa
     setTimeout(() => map.invalidateSize(), 0);
 }
+function generateColors(count) {
+    const colors = [];
+    for (let i = 0; i < count; i++) {
+        const hue = Math.floor((360 / count) * i);
+        colors.push(`hsl(${hue}, 80%, 50%)`);
+    }
+    return colors;
+}
+
 
 // Función para limpiar el mapa
 function clearMap() {
@@ -185,7 +181,7 @@ function clearMap() {
 // Función de búsqueda principal
 function searchRoutes() {
     const query = document.getElementById('search').value.trim().toLowerCase();
-    
+
     if (!query) {
         alert('Por favor ingrese un término de búsqueda');
         return;
@@ -193,14 +189,21 @@ function searchRoutes() {
 
     loadRoutes()
         .then(rutas => {
-            const found = rutas.find(r => 
-                r.nombre.toLowerCase().includes(query) || 
+            // Buscar TODAS las rutas que contienen el nombre de parada o ruta
+            const foundRoutes = rutas.filter(r =>
+                r.nombre.toLowerCase().includes(query) ||
                 r.paradas.some(p => p.nombre.toLowerCase().includes(query))
             );
 
-            if (found) {
-                drawRoute(found);
-                highlightRouteInSidebar(found.nombre);
+            if (foundRoutes.length > 0) {
+                clearMap(); // Limpiar mapa solo una vez
+                const colors = generateColors(foundRoutes.length);
+
+                foundRoutes.forEach((ruta, index) => {
+                    drawRoute(ruta, colors[index]); // Dibujar cada ruta con color distinto
+                });
+
+                highlightRouteInSidebar(foundRoutes[0].nombre);
             } else {
                 alert(`No se encontró "${query}" en nombres de ruta o paradas`);
             }
@@ -210,6 +213,7 @@ function searchRoutes() {
             alert('Error al buscar rutas. Ver consola para detalles.');
         });
 }
+
 
 // Función para cargar rutas en el menú lateral
 function loadRoutesIntoSidebar(rutas) {
