@@ -6,23 +6,84 @@
     <title>Mapa de Transporte Público</title>
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Estilos personalizados -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Mapa de Rutas de Transporte</h1>
-        <div id="map"></div>
-        <div class="controls">
-            <input type="text" id="search" placeholder="Buscar ruta...">
-            <button id="btn-search">Buscar</button>
+    <!-- Botón para abrir/cerrar el menú en móviles -->
+    <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <!-- Menú lateral -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-bus"></i> Rutas Disponibles</h2>
+            <div class="close-btn">
+                <i class="fas fa-times"></i>
+            </div>
         </div>
-        <div id="route-info"></div>
+        
+        <!-- Filtro de búsqueda dentro del menú -->
+        <div class="sidebar-search">
+            <input type="text" id="sidebar-search" placeholder="Filtrar rutas...">
+            <button id="sidebar-search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        
+        <!-- Lista de rutas -->
+        <div class="routes-list">
+            <!-- Las rutas se cargarán dinámicamente con JavaScript -->
+        </div>
+        
+        <!-- Información adicional -->
+        <div class="sidebar-info">
+            <div class="info-card">
+                <i class="fas fa-info-circle"></i>
+                <p>Selecciona una ruta para verla en el mapa</p>
+            </div>
+        </div>
+        
+        <!-- Footer del menú -->
+        <div class="sidebar-footer">
+            <p><i class="fas fa-route"></i> Total rutas: <span id="total-routes">0</span></p>
+            <p><i class="fas fa-clock"></i> Actualizado: <span id="last-update">hoy</span></p>
+        </div>
+    </div>
+    
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <div class="container">
+            <h1><i class="fas fa-map-marked-alt"></i> Mapa de Rutas de Transporte</h1>
+            
+            <!-- Controles de búsqueda -->
+            <div class="controls">
+                <div class="search-container">
+                    <input type="text" id="search" placeholder="Buscar ruta o parada...">
+                    <button id="btn-search"><i class="fas fa-search"></i> Buscar</button>
+                </div>
+                <button id="btn-location"><i class="fas fa-location-arrow"></i> Mi ubicación</button>
+            </div>
+            
+            <!-- Mapa -->
+            <div id="map"></div>
+            
+            <!-- Información de la ruta seleccionada -->
+            <div id="route-info">
+                <div class="route-header">
+                    <h3><i class="fas fa-info-circle"></i> Información de Ruta</h3>
+                </div>
+                <div class="route-content">
+                    <p>Selecciona una ruta del menú para ver detalles</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <!-- Lógica de la app -->
-   <script src="MapaScripts.js"></script>
+    <script src="MapaScripts.js"></script>
 </body>
 </html>
