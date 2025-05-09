@@ -69,20 +69,20 @@ function setupEventListeners() {
 
 // Carga inicial de datos
 function loadInitialData() {
-    loadRoutes()
-        .then(rutas => {
-            if (rutas.length > 0) {
-                loadRoutesIntoSidebar(rutas);
-                drawRoute(rutas[0]);
-                updateRouteInfo(rutas[0]);
-            } else {
-                console.warn('No se encontraron rutas');
-            }
-        })
-        .catch(error => {
-            console.error('Error al cargar rutas:', error);
-            alert('Error al cargar las rutas. Por favor recarga la página.');
-        });
+   loadRoutes()
+    .then(rutas => {
+        if (rutas.length > 0) {
+            loadRoutesIntoSidebar(rutas);
+            clearMap(); // Limpia el mapa por si acaso
+            const colors = generateColors(rutas.length);
+            rutas.forEach((ruta, index) => {
+                drawRoute(ruta, colors[index]);
+            });
+            updateRouteInfo(rutas[0]); // Mostrar la info de la primera ruta
+        } else {
+            console.warn('No se encontraron rutas');
+        }
+    })
 }
 
 // Función para cargar rutas desde el JSON
@@ -197,11 +197,9 @@ function searchRoutes() {
 
             if (foundRoutes.length > 0) {
                 clearMap(); // Limpiar mapa solo una vez
-                const colors = generateColors(foundRoutes.length);
-
-                foundRoutes.forEach((ruta, index) => {
-                    drawRoute(ruta, colors[index]); // Dibujar cada ruta con color distinto
-                });
+                foundRoutes.forEach(ruta => {
+                drawRoute(ruta, getRandomColor());
+            });
 
                 highlightRouteInSidebar(foundRoutes[0].nombre);
             } else {
@@ -212,6 +210,11 @@ function searchRoutes() {
             console.error("Error en búsqueda:", error);
             alert('Error al buscar rutas. Ver consola para detalles.');
         });
+}
+//
+function getRandomColor() {
+    const hue = Math.floor(Math.random() * 360);
+    return `hsl(${hue}, 80%, 50%)`;
 }
 
 
