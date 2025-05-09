@@ -1,23 +1,349 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
+/* Variables de color */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --text-color: #333;
+    --text-light: #7f8c8d;
 }
+
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    background-color: #f5f5f5;
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Iconos */
+i {
+    margin-right: 8px;
+}
+
+/* Botón de toggle del menú */
+.menu-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+    background: white;
+    padding: 10px 12px;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: none;
+    color: var(--secondary-color);
+}
+
+/* Menú lateral */
+.sidebar {
+    width: 320px;
+    background: var(--secondary-color);
+    color: white;
+    height: 100vh;
+    position: fixed;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    z-index: 999;
+    box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+}
+
+.sidebar-header {
+    padding: 20px;
+    background: rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: white;
+}
+
+.close-btn {
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: none;
+    color: var(--light-color);
+}
+
+/* Búsqueda en el sidebar */
+.sidebar-search {
+    padding: 15px 20px;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+}
+
+.sidebar-search input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 14px;
+}
+
+.sidebar-search button {
+    padding: 0 15px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+/* Lista de rutas */
+.routes-list {
+    padding: 10px 0;
+    max-height: calc(100vh - 250px);
+    overflow-y: auto;
+}
+
+.route-item {
+    padding: 12px 20px;
+    margin: 5px 10px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.route-item:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.route-item.active {
+    background: var(--primary-color);
+    font-weight: bold;
+}
+
+.route-item i {
+    margin-right: 10px;
+    color: var(--light-color);
+}
+
+/* Información adicional en sidebar */
+.sidebar-info {
+    padding: 15px 20px;
+}
+
+.info-card {
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.info-card i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+/* Footer del sidebar */
+.sidebar-footer {
+    padding: 15px 20px;
+    background: rgba(0,0,0,0.1);
+    font-size: 0.9rem;
+    color: var(--light-color);
+}
+
+.sidebar-footer p {
+    margin: 5px 0;
+}
+
+/* Contenido principal */
+.main-content {
+    flex: 1;
+    margin-left: 320px;
+    transition: margin-left 0.3s ease;
+    min-height: 100vh;
+    background: white;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 20px;
 }
+
+/* Encabezado */
+h1 {
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* Controles */
+.controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.search-container {
+    flex: 1;
+    display: flex;
+    min-width: 300px;
+}
+
+#search {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    font-size: 16px;
+}
+
+#btn-search, #btn-location {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#btn-search {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#btn-search:hover {
+    background-color: #2980b9;
+}
+
+#btn-location {
+    background-color: var(--light-color);
+    color: var(--text-color);
+}
+
+#btn-location:hover {
+    background-color: #d5dbdb;
+}
+
+/* Mapa */
 #map {
     height: 500px;
     width: 100%;
     margin: 20px 0;
-    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
 }
-.controls {
-    margin: 10px 0;
-}
+
+/* Información de ruta */
 #route-info {
-    background: #f5f5f5;
-    padding: 10px;
-    border-radius: 5px;
+    background: white;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
+}
+
+.route-header {
+    padding: 15px 20px;
+    background: var(--light-color);
+    border-bottom: 1px solid #ddd;
+    border-radius: 8px 8px 0 0;
+}
+
+.route-header h3 {
+    color: var(--secondary-color);
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.route-content {
+    padding: 20px;
+}
+
+.route-content ul {
+    list-style-type: none;
+}
+
+.route-content li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+}
+
+.route-content li:last-child {
+    border-bottom: none;
+}
+
+.route-content li i {
+    color: var(--primary-color);
+    width: 25px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 280px;
+    }
+    
+    .main-content {
+        margin-left: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 280px;
+    }
+    
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .close-btn {
+        display: block;
+    }
+    
+    .controls {
+        flex-direction: column;
+    }
+    
+    .search-container {
+        min-width: 100%;
+    }
+    
+    #btn-location {
+        width: 100%;
+        border-radius: 4px;
+    }
 }
