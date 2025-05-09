@@ -18,7 +18,7 @@ function initializeMap() {
     }
     
     // Inicializar el mapa
-    map = L.map('map').setView([25.6751, -100.3185], 13);
+    map = L.map('map').setView([32.53093, -117.01761], 13);
     
     // Añadir capa base de OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
