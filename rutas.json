@@ -1,19 +1,91 @@
 [
     {
-        "nombre": "Ruta 25 - Centro a ITT",
+        "nombre": "CENTRO - 10 de Mayo",
         "paradas": [
-            { "nombre": "Centro", "lat": 32.53513, "lng": -117.03859 },
-            { "nombre": "Plaza Principal", "lat": 32.53258, "lng": -117.01887},
-            { "nombre": "Campus Universitario", "lat": 32.53001, "lng": -116.98710 }
+            { "nombre": "Centro Av. Constitucion", "lat": 0, "lng": 0 },
+            { "nombre": "Easy Park", "lat": 0, "lng": 0},
+            { "nombre": "Hotel Pueblo Amigo", "lat": 0, "lng": 0 },
+            { "nombre": "Ayuntamiento de Tijuana", "lat": 0, "lng": 0 },
+            { "nombre": "Unidad Deportiva Reforma", "lat": 0, "lng": 0 },
+            { "nombre": "ITT Unidad Tomas Aquino", "lat": 0, "lng": 0},
+            { "nombre": "UABC", "lat": 0, "lng": 0 },
+            { "nombre": "Plaza Unisur", "lat": 0, "lng": 0 },
+            { "nombre": "Parque de la Amistad", "lat": 0, "lng": 0 },
+            { "nombre": "ITT Unidad Otay", "lat": 0, "lng": 0},
+            { "nombre": "Plaza Santa Anita", "lat": 0, "lng": 0 },
+            { "nombre": "Sobreruedas Las Torres", "lat": 0, "lng": 0 },
+            { "nombre": "Jardin de niños Narciso Mendoza", "lat": 0, "lng": 0 }
         ]
     },
     {
-        "nombre": "Taxi 00759 - Centro a UABC",
+        "nombre": "Lomas Taurinas - Nido del Aguila",
         "paradas": [
-            { "nombre": "Centro", "lat": 32.53513, "lng": -117.03859 },	
-            { "nombre": "Plaza Rio", "lat": 32.52852, "lng": -117.01979 },
-			{ "nombre": "UABC", "lat": 32.53070, "lng": -116.96610 }
-
+            { "nombre": "Centro Av. Constitucion", "lat": 0, "lng": 0 },	
+            { "nombre": "Costco - Zona Rio", "lat": 0, "lng": 0 },
+			{ "nombre": "Plaza del Zapato", "lat": 0, "lng": 0 },
+            { "nombre": "Plaza Libertad", "lat": 0, "lng": 0},
+            { "nombre": "IMJUV Otay", "lat": 0, "lng": 0},
+            { "nombre": "UABC", "lat": 0, "lng": 0},
+            { "nombre": "Plaza Unisur", "lat": 0, "lng": 0},
+            { "nombre": "Parque de la Amistad", "lat": 0, "lng": 0},
+            { "nombre": "OXXO Garita", "lat": 0, "lng": 0},
+            { "nombre": "Escuela Secundaria General 117", "lat": 0, "lng": 0}
+        ]
+    },
+    {
+        "nombre": "UABC - Villa Fontana",
+        "paradas": [
+            { "nombre": "Centro Av. Constitucion", "lat": 0, "lng": 0 },	
+            { "nombre": "Easy Park", "lat": 0, "lng": 0 },
+			{ "nombre": "Hotel Pueblo Amigo", "lat": 0, "lng": 0 },
+            { "nombre": "Ayuntamiento de Tijuana", "lat": 0, "lng": 0},
+            { "nombre": "Unidad Deportiva Reforma", "lat": 0, "lng": 0},
+            { "nombre": "ITT Unidad Tomas Aquino", "lat": 0, "lng": 0},
+            { "nombre": "UABC", "lat": 0, "lng": 0},
+            { "nombre": "Plaza Unisur", "lat": 0, "lng": 0},
+            { "nombre": "Parque de la Amistad", "lat": 0, "lng": 0},
+            { "nombre": "ITT Unidad Otay", "lat": 0, "lng": 0},
+            { "nombre": "Plaza Santa Anita", "lat": 0, "lng": 0},
+            { "nombre": "Plaza Cucapah", "lat": 0, "lng": 0},
+            { "nombre": "Parque Villa Encantada", "lat": 0, "lng": 0},
+            { "nombre": "Panteon Municipal #10", "lat": 0, "lng": 0},
+            { "nombre": "Parque Villa Fontana", "lat": 0, "lng": 0},
+            { "nombre": "Unidad Deportiva Las Villas", "lat": 0, "lng": 0},
+            { "nombre": "Plaza Paseo 2000", "lat": 0, "lng": 0},
+            { "nombre": "Plaza Oasis Tijuana", "lat": 0, "lng": 0},
+            { "nombre": "Plaza Sendero Tijuana", "lat": 0, "lng": 0}
+        ]
+    },
+    {
+        "nombre": "Natura - Venados",
+        "paradas": [
+            { "nombre": "Centro Av. Constitucion", "lat": 0, "lng": 0 },	
+            { "nombre": "Easy Park", "lat": 0, "lng": 0 },
+			{ "nombre": "Hotel Pueblo Amigo", "lat": 0, "lng": 0 },
+            { "nombre": "Ayuntamiento de Tijuana", "lat": 0, "lng": 0},
+            { "nombre": "Unidad Deportiva Reforma", "lat": 0, "lng": 0},
+            { "nombre": "ITT Unidad Tomas Aquino", "lat": 0, "lng": 0},
+            { "nombre": "UABC", "lat": 0, "lng": 0},
+            { "nombre": "Plaza Unisur", "lat": 0, "lng": 0},
+            { "nombre": "Parque de la Amistad", "lat": 0, "lng": 0},
+            { "nombre": "ITT Unidad Otay", "lat": 0, "lng": 0},
+            { "nombre": "Plaza Paseo 2000", "lat": 0, "lng": 0},
+            { "nombre": "Plaza Oasis Tijuana", "lat": 0, "lng": 0},
+            { "nombre": "Hospital General Tijuana Zona Este", "lat": 0, "lng": 0},
+            { "nombre": "OXXO Natura", "lat": 0, "lng": 0}
+        ]
+    },
+    {
+        "nombre": "Aeropuerto - Modulos",
+        "paradas": [
+            { "nombre": "Centro Av. Constitucion", "lat": 0, "lng": 0 },	
+            { "nombre": "Costco - Zona Rio", "lat": 0, "lng": 0 },
+			{ "nombre": "Plaza del Zapato", "lat": 0, "lng": 0 },
+            { "nombre": "Plaza Libertad", "lat": 0, "lng": 0},
+            { "nombre": "Plaza Aeropuerto", "lat": 0, "lng": 0},
+            { "nombre": "Aeropuerto Internacional de Tijuana", "lat": 0, "lng": 0},
+            { "nombre": "OXXO Garita", "lat": 0, "lng": 0},
+            { "nombre": "Farmacias Benavides Bellas Artes", "lat": 0, "lng": 0}
         ]
     }
 ]
