@@ -112,7 +112,6 @@ function drawRoute(route, color = '#0066cc') {
     }
 
     // NO limpiar el mapa aquí (se hace una vez desde searchRoutes)
-
     if (!route.paradas || !Array.isArray(route.paradas) || route.paradas.length === 0) {
         console.error('La ruta no tiene paradas válidas');
         return;
@@ -249,22 +248,24 @@ function loadRoutesIntoSidebar(rutas) {
         `;
         
         routeItem.addEventListener('click', () => {
-            // Remover clase active de todos los items
-            document.querySelectorAll('.route-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // Agregar clase active al item seleccionado
-            routeItem.classList.add('active');
-            
-            // Dibujar la ruta seleccionada
-            drawRoute(ruta);
-            
-            // Cerrar menú en móviles
-            if (window.innerWidth <= 768) {
-                closeSidebar();
-            }
-        });
+    // Remover clase active de todos los items
+    document.querySelectorAll('.route-item').forEach(item => {
+        item.classList.remove('active');
+    });
+
+    // Agregar clase active al item seleccionado
+    routeItem.classList.add('active');
+
+    // Limpiar el mapa antes de dibujar la nueva ruta
+    clearMap();
+    drawRoute(ruta);
+
+    // Cerrar menú en móviles
+    if (window.innerWidth <= 768) {
+        closeSidebar();
+    }
+});
+
         
         // Seleccionar la primera ruta por defecto
         if (index === 0) {
